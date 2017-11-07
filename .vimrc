@@ -16,10 +16,11 @@ Plug 'Lokaltog/vim-powerline'
 Plug 'easymotion/vim-easymotion'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/Auto-Pairs'
 Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'php' }
-Plug 'vim-scripts/Auto-Pairs', { 'for': 'php' }
 Plug 'vim-scripts/AutoComplPop', { 'for': 'php' }
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
+Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'tell-k/vim-autopep8', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python' }
@@ -68,9 +69,10 @@ filetype plugin on
 filetype plugin indent on     " required!
 syntax on
 
-autocmd BufNewFile *.py exec ":call SetPyTitle()" 
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType html set omnifunc=xmlcomplete#CompleteTags
+autocmd BufNewFile *.py exec ":call SetPyTitle()" 
 
 "set t_Co=16
 "colorscheme wombat256mod

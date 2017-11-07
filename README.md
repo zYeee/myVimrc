@@ -31,3 +31,7 @@ http://www.gnu.org/software/global/globaldoc_toc.html
 pip install jedi
 git submodule update --init
 ```
+## php-namespace
+```
+ctags -R --PHP-kinds=cfi
+```
