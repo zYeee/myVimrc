@@ -17,6 +17,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/Auto-Pairs'
+Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'php' }
 Plug 'vim-scripts/AutoComplPop', { 'for': 'php' }
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
@@ -24,6 +25,7 @@ Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'tell-k/vim-autopep8', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python' }
+
 call plug#end()
 
 map <silent> <F2> : Tagbar<CR>
@@ -42,7 +44,7 @@ map <c-l> <c-w>l
 map <leader>y "+y
 map <leader>p "+p
 nmap H gT
-nmap L gT
+nmap L gt
 imap jj <Esc><Right>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
@@ -109,6 +111,10 @@ let CtagsCscope_Auto_Map = 1
 let GtagsCscope_Quiet = 1
 
 let g:solarized_termtrans = 1
+
+"markdown
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
