@@ -25,6 +25,7 @@ Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'tell-k/vim-autopep8', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python' }
+Plug 'maralla/completor.vim', {'for': 'python'}
 
 call plug#end()
 
@@ -66,6 +67,7 @@ set ignorecase
 set cc=80
 set backspace=indent,eol,start
 set nocompatible              " be iMproved
+set noswapfile
 filetype on                   " required!
 filetype plugin on
 filetype plugin indent on     " required!
@@ -154,3 +156,11 @@ func! Complie()
 		exec "!php %"
 	endif
 endfunc
+
+"jedi
+let g:jedi#goto_assignments_command = "<C-]>"
+"let g:jedi#goto_assignments_command = "<leader>g"
+"let g:jedi#documentation_command = "K"
+"let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-j>"
+"let g:jedi#rename_command = "<leader>r"
