@@ -26,6 +26,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'tell-k/vim-autopep8', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python' }
 Plug 'maralla/completor.vim', {'for': 'python'}
+Plug 'Yggdroot/indentLine', {'for': 'python'}
 
 call plug#end()
 
@@ -84,7 +85,7 @@ set background=dark
 colorscheme solarized
 
 func! SetPyTitle()
-     call setline(1,"#!/usr/bin/python2.7")
+     call setline(1,"#!/usr/local/bin/python3")
      call append(line("."),   "# -*- coding: utf-8 -*-")
 endfunc
 
