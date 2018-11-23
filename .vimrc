@@ -17,6 +17,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/Auto-Pairs'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'php' }
 Plug 'vim-scripts/AutoComplPop', { 'for': 'php' }
@@ -165,3 +166,11 @@ let g:jedi#goto_assignments_command = "<C-]>"
 "let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-j>"
 "let g:jedi#rename_command = "<leader>r"
+
+" gutentags
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+let g:gutentags_project_root = ['.git']
+" 所生成的数据文件的名称 "
+let g:gutentags_ctags_tagfile = 'tags'
+" 配置 ctags 的参数 "
+let g:gutentags_ctags_extra_args = ['-R --PHP-kinds=cfi']
