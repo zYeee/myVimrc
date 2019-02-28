@@ -156,6 +156,8 @@ func! Complie()
 		exec "!python3 %"
 	elseif (&filetype == 'php')
 		exec "!php %"
+	elseif (&filetype == 'perl')
+		exec "!perl %"
 	endif
 endfunc
 
