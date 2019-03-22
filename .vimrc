@@ -20,6 +20,7 @@ Plug 'vim-scripts/Auto-Pairs'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'c9s/perlomni.vim'
 Plug 'vim-scripts/AutoComplPop'
+Plug 'tpope/vim-surround'
 Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'php' }
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
