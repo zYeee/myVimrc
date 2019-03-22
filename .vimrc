@@ -18,9 +18,10 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/Auto-Pairs'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'c9s/perlomni.vim'
+Plug 'vim-scripts/AutoComplPop'
 Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'php' }
-Plug 'vim-scripts/AutoComplPop', { 'for': 'php' }
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
 Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -176,3 +177,5 @@ let g:gutentags_project_root = ['.git']
 let g:gutentags_ctags_tagfile = 'tags'
 " 配置 ctags 的参数 "
 let g:gutentags_ctags_extra_args = ['-R --PHP-kinds=cfi']
+
+let g:acp_behaviorPerlOmniLength = 1
