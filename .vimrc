@@ -21,6 +21,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'c9s/perlomni.vim'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'tpope/vim-surround'
+Plug 'vim-scripts/perl-support.vim'
 Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'php' }
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
@@ -46,6 +47,7 @@ map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
+map ,pt :%! perltidy
 map <leader>y "+y
 map <leader>p "+p
 nmap H gT
@@ -179,4 +181,4 @@ let g:gutentags_ctags_tagfile = 'tags'
 " 配置 ctags 的参数 "
 let g:gutentags_ctags_extra_args = ['-R --PHP-kinds=cfi']
 
-let g:acp_behaviorPerlOmniLength = 1
+let g:acp_behaviorPerlOmniLength = 0
