@@ -35,3 +35,8 @@ git submodule update --init
 ```
 ctags -R --PHP-kinds=cfi
 ```
+
+## configure
+```
+./configure --prefix=/usr/local --enable-python3interp=yes --enable-terminal --enable-pythoninterp=yes --enable-perlinterp=yes --enable-cscope
+```
