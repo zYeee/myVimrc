@@ -22,7 +22,6 @@ Plug 'c9s/perlomni.vim'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/perl-support.vim'
-Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'php' }
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
 Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
@@ -74,6 +73,8 @@ set cc=80
 set backspace=indent,eol,start
 set nocompatible              " be iMproved
 set noswapfile
+set incsearch
+set smartcase
 filetype on                   " required!
 filetype plugin on
 filetype plugin indent on     " required!
