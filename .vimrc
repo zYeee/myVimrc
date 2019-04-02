@@ -7,7 +7,8 @@ Plug 'godlygeek/tabular'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'w0rp/ale'
 Plug 'mileszs/ack.vim' 
-Plug 'kien/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'aceofall/gtags.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -51,6 +52,12 @@ map <leader>y "+y
 map <leader>p "+p
 nmap H gT
 nmap L gt
+
+"fzf
+nmap <C-p> :Files<CR>
+nmap <C-e> :Buffers<CR>
+
+
 imap jj <Esc><Right>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
@@ -104,9 +111,6 @@ let g:DoxygenToolkit_licenseTag = s:licenseTag
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:doxygen_enhanced_color=1
 
-"CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_by_filename = 1
 
 "ack
 let g:ack_default_options = " --php"
@@ -183,3 +187,5 @@ let g:gutentags_ctags_tagfile = 'tags'
 let g:gutentags_ctags_extra_args = ['-R --PHP-kinds=cfi']
 
 let g:acp_behaviorPerlOmniLength = 0
+
+set tags=tags;
