@@ -104,6 +104,7 @@ let g:solarized_termtrans = 1
 
 "ack
 let g:ack_default_options = " --perl"
+let g:ackhighlight = 1
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
