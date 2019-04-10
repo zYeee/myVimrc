@@ -9,7 +9,7 @@ Plug 'w0rp/ale'
 Plug 'mileszs/ack.vim' 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'aceofall/gtags.vim'
+"Plug 'aceofall/gtags.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
@@ -23,7 +23,7 @@ Plug 'c9s/perlomni.vim'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/perl-support.vim'
-Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'php' }
+Plug 'dyng/ctrlsf.vim'
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
 Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -39,24 +39,22 @@ map <F3>          : call Complie()<CR>
 map <silent> <F4> : Tab/=<CR>
 map <F12>         : !send<CR>
 map <F5>          : GitGutterToggle<CR>
-map <F6>          : !php -l %<CR>
-map <C-a>         : DoxAuthor<CR>
-map <C-f>         : Dox<CR>
+map <F6>          : NERDTreeToggle<CR>
 map <C-g>         : NERDTreeTabsFind<CR>
 map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
-map ,pt :%! perltidy
 map <leader>y "+y
 map <leader>p "+p
+map cc :cclose<CR>
 nmap H gT
 nmap L gt
 
 "fzf
 nmap <C-p> :Files<CR>
-nmap <C-e> :Buffers<CR>
-
+nmap <C-b> :Buffers<CR>
+nmap <C-f> :Ack! 
 
 imap jj <Esc><Right>
 inoremap <C-j> <Down>
@@ -102,38 +100,13 @@ func! SetPyTitle()
      call append(line("."),   "# -*- coding: utf-8 -*-")
 endfunc
 
-"DoxygenToolkit
-let g:DoxygenToolkit_authorName="zhuye,yformat930@126.com"
-let s:licenseTag = "Copyright(C)\<enter>"
-let s:licenseTag = s:licenseTag . "For free\<enter>"
-let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
-let g:DoxygenToolkit_licenseTag = s:licenseTag
-let g:DoxygenToolkit_briefTag_funcName="yes"
-let g:doxygen_enhanced_color=1
-
-
-"ack
-let g:ack_default_options = " --php"
-
-"gtags
-set cscopetag
-set cscopeprg='gtags-cscope'
-
-let GtagsCscope_Auto_Load = 1
-let CtagsCscope_Auto_Map = 1
-let GtagsCscope_Quiet = 1
-
 let g:solarized_termtrans = 1
 
-"markdown
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 1
+"ack
+let g:ack_default_options = " --perl"
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
 endif
 
 "nerdtree
@@ -177,15 +150,12 @@ let g:jedi#goto_assignments_command = "<C-]>"
 "let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-j>"
 "let g:jedi#rename_command = "<leader>r"
-
 " gutentags
 " gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
 let g:gutentags_project_root = ['.git']
 " 所生成的数据文件的名称 "
 let g:gutentags_ctags_tagfile = 'tags'
-" 配置 ctags 的参数 "
-let g:gutentags_ctags_extra_args = ['-R --PHP-kinds=cfi']
 
 let g:acp_behaviorPerlOmniLength = 0
 
-set tags=tags;
+"set tags=tags;
