@@ -4,28 +4,28 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'newzealandpaul/wombat256mod'
 Plug 'othree/xml.vim'
 Plug 'godlygeek/tabular'
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 Plug 'w0rp/ale'
 Plug 'mileszs/ack.vim' 
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 "Plug 'aceofall/gtags.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
-Plug 'Lokaltog/vim-powerline'
 Plug 'easymotion/vim-easymotion'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/Auto-Pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'c9s/perlomni.vim'
-Plug 'vim-scripts/AutoComplPop'
+"Plug 'c9s/perlomni.vim'
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/perl-support.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
+Plug 'vim-scripts/AutoComplPop', { 'for': 'perl' }
+Plug 'vim-scripts/perl-support.vim', { 'for': 'perl' }
 Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'tell-k/vim-autopep8', { 'for': 'python' }
@@ -56,6 +56,9 @@ nmap L gt
 nmap <C-p> :Files<CR>
 nmap <C-b> :Buffers<CR>
 nmap <C-f> :Ack! 
+
+nmap ]] :set iskeyword-=:<CR>
+nmap [[ :set iskeyword+=:<CR>
 
 imap jj <Esc><Right>
 inoremap <C-j> <Down>
@@ -152,12 +155,19 @@ let g:jedi#goto_assignments_command = "<C-]>"
 "let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-j>"
 "let g:jedi#rename_command = "<leader>r"
+
+
 " gutentags
 " gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
-let g:gutentags_project_root = ['.git']
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+
 " 所生成的数据文件的名称 "
 let g:gutentags_ctags_tagfile = 'tags'
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
 
 let g:acp_behaviorPerlOmniLength = 0
 
-"set tags=tags;
+"set tags=taaags;
+let g:airline_extensions = []
