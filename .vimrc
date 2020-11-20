@@ -23,15 +23,17 @@ Plug 'ludovicchabant/vim-gutentags'
 "Plug 'c9s/perlomni.vim'
 Plug 'tpope/vim-surround'
 Plug 'dyng/ctrlsf.vim'
-Plug 'lvht/phpcd.vim', { 'for': 'php' }
+"Plug 'lvht/phpcd.vim', { 'for': 'php' }
 Plug 'vim-scripts/AutoComplPop', { 'for': 'perl' }
 Plug 'vim-scripts/perl-support.vim', { 'for': 'perl' }
-Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
+"Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'tell-k/vim-autopep8', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python' }
 Plug 'maralla/completor.vim', {'for': 'python'}
 Plug 'Yggdroot/indentLine', {'for': 'python'}
+Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 call plug#end()
 
@@ -84,6 +86,7 @@ set nocompatible              " be iMproved
 set noswapfile
 set incsearch
 set smartcase
+set pythonthreedll=/usr/local/Cellar/python@3.8/3.8.2/Frameworks/Python.framework/Versions/3.8/lib/libpython3.8.dylib
 filetype on                   " required!
 filetype plugin on
 filetype plugin indent on     " required!
@@ -171,3 +174,5 @@ let g:acp_behaviorPerlOmniLength = 0
 
 "set tags=taaags;
 let g:airline_extensions = []
+
+let g:jedi#force_py_version = 3
