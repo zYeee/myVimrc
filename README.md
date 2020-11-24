@@ -8,7 +8,12 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```
 ## autopep8
 ```
+https://pip.pypa.io/en/stable/installing/
 pip install autopep8
+```
+## flake8
+```
+pip3 install flake8
 ```
 ## phpmd
 ```

@@ -20,22 +20,23 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/Auto-Pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'ludovicchabant/vim-gutentags'
-"Plug 'c9s/perlomni.vim'
 Plug 'tpope/vim-surround'
 Plug 'dyng/ctrlsf.vim'
-"Plug 'lvht/phpcd.vim', { 'for': 'php' }
-Plug 'vim-scripts/AutoComplPop', { 'for': 'perl' }
-Plug 'vim-scripts/perl-support.vim', { 'for': 'perl' }
-"Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
+"Plug 'ervandew/supertab'
+Plug 'vim-scripts/AutoComplPop', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'tell-k/vim-autopep8', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python' }
-Plug 'maralla/completor.vim', {'for': 'python'}
 Plug 'Yggdroot/indentLine', {'for': 'python'}
-Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-
+"Plug 'maralla/completor.vim', {'for': 'python'}
+"Plug 'lvht/phpcd.vim', { 'for': 'php' }
+"Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
+"Plug 'vim-scripts/perl-support.vim', { 'for': 'perl' }
+"Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 call plug#end()
+
+let mapleader=";"
 
 map <silent> <F2> : Tagbar<CR>
 map <F3>          : call Complie()<CR>
@@ -53,6 +54,7 @@ map <leader>p "+p
 map cc :cclose<CR>
 nmap H gT
 nmap L gt
+nmap <leader>tt :ter<CR>
 
 "fzf
 nmap <C-p> :Files<CR>
@@ -66,8 +68,6 @@ imap jj <Esc><Right>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
-
-let mapleader=";"
 
 "tagbar
 let g:tagbar_width=30
@@ -86,7 +86,7 @@ set nocompatible              " be iMproved
 set noswapfile
 set incsearch
 set smartcase
-set pythonthreedll=/usr/local/Cellar/python@3.8/3.8.2/Frameworks/Python.framework/Versions/3.8/lib/libpython3.8.dylib
+set pythonthreedll=/usr/local/Cellar/python@3.9/3.9.0_2/Frameworks/Python.framework/Versions/3.9/lib/libpython3.9.dylib
 filetype on                   " required!
 filetype plugin on
 filetype plugin indent on     " required!
@@ -153,12 +153,14 @@ endfunc
 
 "jedi
 let g:jedi#goto_assignments_command = "<C-]>"
+let g:jedi#completions_command = "<C-j>"
+let g:jedi#force_py_version = 3
+let g:jedi#popup_select_first = 1
+let g:pymode_rope = 0
 "let g:jedi#goto_assignments_command = "<leader>g"
 "let g:jedi#documentation_command = "K"
 "let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-j>"
 "let g:jedi#rename_command = "<leader>r"
-
 
 " gutentags
 " gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
@@ -169,10 +171,5 @@ let g:gutentags_ctags_tagfile = 'tags'
 let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 
-
-let g:acp_behaviorPerlOmniLength = 0
-
 "set tags=taaags;
 let g:airline_extensions = []
-
-let g:jedi#force_py_version = 3
