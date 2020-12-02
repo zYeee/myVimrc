@@ -22,6 +22,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
 Plug 'dyng/ctrlsf.vim'
+Plug 'sheerun/vim-polyglot'
 "Plug 'ervandew/supertab'
 Plug 'vim-scripts/AutoComplPop', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -43,7 +44,7 @@ map <F3>          : call Complie()<CR>
 map <silent> <F4> : Tab/=<CR>
 map <F12>         : !send<CR>
 map <F5>          : GitGutterToggle<CR>
-map <F6>          : NERDTreeToggle<CR>
+map <leader><F2>          : NERDTreeToggle<CR>
 map <C-g>         : NERDTreeTabsFind<CR>
 map <c-h> <c-w>h
 map <c-j> <c-w>j
@@ -54,12 +55,15 @@ map <leader>p "+p
 map cc :cclose<CR>
 nmap H gT
 nmap L gt
-nmap <leader>tt :ter<CR>
+nmap <leader><leader>t :ter<CR>
+nmap <leader><leader>i :!isort %<CR><CR>
 
 "fzf
 nmap <C-p> :Files<CR>
 nmap <C-b> :Buffers<CR>
-nmap <C-f> :Ack! 
+"nmap <C-f> :Ack! 
+nmap <C-f> :CtrlSF 
+nmap <C-;> :CtrlSFToggle<CR> 
 
 nmap ]] :set iskeyword-=:<CR>
 nmap [[ :set iskeyword+=:<CR>
@@ -86,7 +90,7 @@ set nocompatible              " be iMproved
 set noswapfile
 set incsearch
 set smartcase
-set pythonthreedll=/usr/local/Cellar/python@3.9/3.9.0_2/Frameworks/Python.framework/Versions/3.9/lib/libpython3.9.dylib
+set pythonthreedll=/usr/local/opt/python@3.7/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7.dylib
 filetype on                   " required!
 filetype plugin on
 filetype plugin indent on     " required!
@@ -119,6 +123,7 @@ endif
 
 "nerdtree
 let g:nerdtree_tabs_open_on_console_startup=1
+let NERDTreeShowHidden=1
 
 func! Complie()
 	exec "w"
@@ -173,3 +178,7 @@ let g:gutentags_cache_dir = s:vim_tags
 
 "set tags=taaags;
 let g:airline_extensions = []
+
+let g:ctrlsf_auto_focus = {
+    \ "at": "start"
+    \ }
