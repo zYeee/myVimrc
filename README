@@ -38,5 +38,7 @@ BENCHMARK -*- mode: org; -*-
 
 ** COC
    #+begin_src bash
+   CocInstall coc-json
+   CocInstall coc-go
    CocInstall coc-spell-checker
    #+end_src
