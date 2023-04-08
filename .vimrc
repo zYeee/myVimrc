@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'newzealandpaul/wombat256mod'
@@ -28,10 +29,11 @@ Plug 'sheerun/vim-polyglot'
 Plug 'luochen1990/rainbow'
 Plug 'ruanyl/vim-gh-line'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'Yggdroot/LeaderF'
-Plug 'vim-scripts/AutoComplPop', { 'for': 'python' }
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+"Plug 'vim-scripts/AutoComplPop', { 'for': 'python' }
 Plug 'tell-k/vim-autopep8', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'nvie/vim-flake8', {'for': 'python' }
 Plug 'Yggdroot/indentLine', {'for': 'python'}
 "Plug 'maralla/completor.vim', {'for': 'python'}
@@ -40,7 +42,7 @@ Plug 'Yggdroot/indentLine', {'for': 'python'}
 "Plug 'vim-scripts/perl-support.vim', { 'for': 'perl' }
 "Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['go']}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['go', 'python']}
 call plug#end()
 
 set encoding=UTF-8
@@ -70,7 +72,7 @@ nmap <leader><leader>i :!isort %<CR><CR>
 "nmap <C-b> :Buffers<CR>
 "nmap <C-f> :Ack! 
 nmap <C-f> :CtrlSF 
-nmap <C-;> :CtrlSFToggle<CR> 
+nmap <C-f>; :CtrlSFToggle<CR> 
 
 nmap ff :LeaderfFunction!<CR>
 
@@ -112,7 +114,7 @@ autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType html set omnifunc=xmlcomplete#CompleteTags
 autocmd BufNewFile *.py exec ":call SetPyTitle()" 
-autocmd VimEnter * NERDTree
+"autocmd BufWritePost *.py CocCommand python.sortImports
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
       \ && b:NERDTree.isTabTree()) | q | endif
 
@@ -149,7 +151,6 @@ func! Complie()
 			exec "!./%< && rm %<"
 		else 
 			copen
-		" %在vim中代表当前文件名，%<代表不含扩展名的文件名
         endif
     elseif &filetype == 'c'
 		set makeprg=gcc\ -o\ %<\ %
@@ -159,7 +160,6 @@ func! Complie()
 			exec "!./%< && rm %<"
 		else 
 			copen
-		" %在vim中代表当前文件名，%<代表不含扩展名的文件名
         endif
 	elseif (&filetype=='python')
 		exec "!python3 %"
@@ -187,10 +187,8 @@ let g:autopep8_max_line_length=100
 "let g:jedi#rename_command = "<leader>r"
 
 " gutentags
-" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
 
-" 所生成的数据文件的名称 "
 let g:gutentags_ctags_tagfile = 'tags'
 let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
@@ -222,9 +220,34 @@ let g:go_highlight_operators = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_function_calls = 1
+let g:go_fillstruct_mode = 'gopls'
+
 
 let g:Lf_PreviewInPopup = 1
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_ShowDevIcons = 0
+let g:Lf_UseCache = 0
+
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
+
+"let g:ale_linters = {'go': ['staticcheck', 'gofmt', 'golangci-lint']}
+let g:ale_linters = {'go': ['golangci-lint']}
+let g:ale_go_golangci_lint_options = '-c /Users/yzhu/.golangci.yml'
+let g:ale_go_golangci_lint_package = 1
+"let g:ale_linters = {'go': ['golint', 'staticcheck']}
+"let g:ale_go_staticcheck_lint_package = 1
+
+" \tr will send text to the window
+nnoremap <leader>tr yy \| :call term_sendkeys(term_list()[0], @")<CR>
+vnoremap <leader>tr y \| :call term_sendkeys(term_list()[0], @")<CR>
+
+" bookmark
+let g:bookmark_auto_save = 1
+let g:bookmark_save_per_working_dir = 1
+nmap <Leader>bs <Plug>BookmarkShowAll
+nmap <Leader>ba <Plug>BookmarkAnnotate
+nmap <Leader>bt <Plug>BookmarkToggle
+nmap <leader>rn <Plug>(coc-rename)
